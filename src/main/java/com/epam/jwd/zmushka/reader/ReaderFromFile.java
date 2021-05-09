@@ -1,7 +1,6 @@
 package com.epam.jwd.zmushka.reader;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -30,4 +29,5 @@ public final class ReaderFromFile {
         }
         return textFromFile.toString();
     }
+
 }
