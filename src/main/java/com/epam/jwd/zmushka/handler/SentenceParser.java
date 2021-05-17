@@ -28,7 +28,7 @@ public class SentenceParser implements Parser {
         String[] lexemes = string.split(" ");
 
         for (String lexeme : lexemes) {
-            sentenceComponent.addComponent(nextParser.handleRequest(string));
+            sentenceComponent.addComponent(nextParser.handleRequest(lexeme));
         }
         return sentenceComponent;
     }

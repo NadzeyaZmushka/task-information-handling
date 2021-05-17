@@ -6,7 +6,24 @@ import java.util.Objects;
 
 public class Composite implements Component {
 
-    private final List<Component> components = new ArrayList<>();
+    private List<Component> components = new ArrayList<>();
+    private ComponentType componentType;
+
+    public Composite() {
+    }
+
+    public Composite(ComponentType componentType) {
+        this.componentType = componentType;
+    }
+
+    public Composite(List<Component> components) {
+        this.components = components;
+    }
+
+    public Composite(List<Component> components, ComponentType componentType) {
+        this.components = components;
+        this.componentType = componentType;
+    }
 
     @Override
     public void addComponent(Component component) {
@@ -32,6 +49,20 @@ public class Composite implements Component {
     @Override
     public int getAmountOfComponents() {
         return components.size();
+    }
+
+    @Override
+    public String getString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Component component : components) {
+            stringBuilder.append(component.getString());
+        }
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public ComponentType getComponentType() {
+        return componentType;
     }
 
     @Override

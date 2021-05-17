@@ -8,6 +8,8 @@ public class LexemeParser implements Parser {
 
     private static LexemeParser instance;
 
+    private static final String LEXEME_REGEX ="\\s";
+
     private LexemeParser() {
     }
 
@@ -21,7 +23,7 @@ public class LexemeParser implements Parser {
     @Override
     public Component handleRequest(String string) {
         Component lexemeComponent = new Lexeme();
-        String[] symbols = string.split("");
+        String[] symbols = string.split(LEXEME_REGEX);
 
         for (String symbol : symbols) {
             lexemeComponent.addComponent(new Symbol(symbol));

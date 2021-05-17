@@ -6,7 +6,19 @@ import java.util.Objects;
 
 public class Lexeme implements Component {
 
-    private final List<Component> components = new ArrayList<>();
+    private List<Component> components = new ArrayList<>();
+    private ComponentType componentType;
+
+    public Lexeme() {
+    }
+
+    public Lexeme(ComponentType componentType) {
+        this.componentType = componentType;
+    }
+
+    public Lexeme(List<Component> components) {
+        this.components = components;
+    }
 
     @Override
     public void addComponent(Component component) {
@@ -26,6 +38,22 @@ public class Lexeme implements Component {
     @Override
     public int getAmountOfComponents() {
         return components.size();
+    }
+
+    @Override
+    public String getString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Component component : components) {
+            stringBuilder.append(component.getString());
+        }
+//        return stringBuilder.append(" ").toString();
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public ComponentType getComponentType() {
+        return componentType;
     }
 
     @Override

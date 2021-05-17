@@ -6,7 +6,24 @@ import java.util.Objects;
 
 public class Paragraph implements Component {
 
-    private final List<Component> sentences = new ArrayList<>();
+    private List<Component> sentences = new ArrayList<>();
+    private ComponentType componentType;
+
+    public Paragraph() {
+    }
+
+    public Paragraph(ComponentType componentType) {
+        this.componentType = componentType;
+    }
+
+    public Paragraph(List<Component> sentences) {
+        this.sentences = sentences;
+    }
+
+    public Paragraph(List<Component> sentences, ComponentType componentType) {
+        this.sentences = sentences;
+        this.componentType = componentType;
+    }
 
     @Override
     public void addComponent(Component component) {
@@ -32,6 +49,26 @@ public class Paragraph implements Component {
     @Override
     public int getAmountOfComponents() {
         return sentences.size();
+    }
+
+    @Override
+    public String getString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\t");
+
+        for (Component sentence : sentences) {
+            stringBuilder.append(sentence.getString());
+        }
+
+//        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        stringBuilder.append("\n");
+
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public ComponentType getComponentType() {
+        return componentType;
     }
 
     @Override

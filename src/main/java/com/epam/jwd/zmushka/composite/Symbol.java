@@ -10,7 +10,13 @@ import java.util.Objects;
 public class Symbol implements Component {
 
     private final String symbol;
+    private ComponentType componentType;
     private static final Logger LOGGER = LogManager.getLogger(Symbol.class);
+
+    public Symbol(String symbol, ComponentType componentType) {
+        this.symbol = symbol;
+        this.componentType = componentType;
+    }
 
     public Symbol(String symbol) {
         this.symbol = symbol;
@@ -36,6 +42,16 @@ public class Symbol implements Component {
     @Override
     public int getAmountOfComponents() {
         return 0;
+    }
+
+    @Override
+    public String getString() {
+        return symbol;
+    }
+
+    @Override
+    public ComponentType getComponentType() {
+        return componentType;
     }
 
     @Override

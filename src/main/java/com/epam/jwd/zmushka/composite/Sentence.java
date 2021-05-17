@@ -6,7 +6,21 @@ import java.util.Objects;
 
 public class Sentence implements Component {
 
-    private final List<Component> lexemes = new ArrayList<>();
+    private List<Component> lexemes = new ArrayList<>();
+    private ComponentType componentType;
+
+    public Sentence() {
+    }
+
+    public Sentence(List<Component> lexemes) {
+        this.lexemes = lexemes;
+    }
+
+
+    public Sentence(List<Component> lexemes, ComponentType componentType) {
+        this.lexemes = lexemes;
+        this.componentType = componentType;
+    }
 
     @Override
     public void addComponent(Component component) {
@@ -29,6 +43,21 @@ public class Sentence implements Component {
     @Override
     public int getAmountOfComponents() {
         return lexemes.size();
+    }
+
+    @Override
+    public String getString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Component component : lexemes) {
+            stringBuilder.append(component.getString());
+        }
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public ComponentType getComponentType() {
+        return componentType;
     }
 
     @Override

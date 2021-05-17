@@ -12,4 +12,8 @@ public interface Component {
 
     int getAmountOfComponents();
 
+    String getString();
+
+    ComponentType getComponentType();
+
 }
